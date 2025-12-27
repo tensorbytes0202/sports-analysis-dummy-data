@@ -1,0 +1,185 @@
+Input:
+Raw cricket videos (mobile / camera) of batsmen & bowlers
+
+Output:
+Pose-based analytics
+Technique score (0–100)
+Strengths, weaknesses, injury risks
+Actionable improvement suggestions
+Progress tracking over time
+
+Video Upload
+     ↓
+Frame Extraction
+     ↓
+Pose Estimation (2D / 3D)
+     ↓
+Action Segmentation (run-up, jump, swing)
+     ↓
+Feature Extraction (angles, timing, velocity)
+     ↓
+Technique Evaluation Model
+     ↓
+Scoring + Feedback Engine
+     ↓
+Web / Mobile Dashboard
+
+
+| Type                     | Purpose              |
+| ------------------------ | -------------------- |
+| Perfect technique videos | Ground truth         |
+| Average players          | Real-world variation |
+| Faulty technique videos  | Error learning       |
+
+
+2.2 Annotation (This makes or breaks the model)
+You must label:
+Bat swing phases
+Foot positioning
+Hip–shoulder separation
+Head stability
+Release point (bowler)
+
+| Model          | Use                   |
+| -------------- | --------------------- |
+| MoveNet        | Fast, mobile-friendly |
+| OpenPose       | Detailed joints       |
+| MediaPipe Pose | Real-time             |
+| **ViTPose**    | High accuracy         |
+➡️ Output: 17–33 body keypoints per frame
+
+
+3.2 Action Segmentation (Cricket-Specific)
+Split video into:
+Run-up
+Load phase
+Jump / stride
+Release / swing
+Follow-through
+
+Models:
+Temporal CNN
+LSTM / GRU
+Temporal Transformer
+
+3.4 Technique Scoring Model
+
+Two approaches:
+Phase 1 (Rule + ML Hybrid)
+Expert-defined biomechanical ranges
+ML regression/classification
+Phase 2 (Fully Deep Learning)
+Graph Neural Networks on pose
+Transformer-based scoring
+
+🧪 4. Feedback & Improvement Engine
+This is what coaches will PAY for.
+Examples:
+“Front foot landing early → reducing power”
+“Excessive lateral head movement”
+“Late hip rotation causing mistimed shots”
+
+
+“Similarity / Confidence-based Evaluation System”
+ya
+“Model Confidence + Distribution Matching”
+Matlab:
+Model sirf prediction nahi kare
+Balki ye bhi bataye:
+“Ye naya video mere training data jaisa hai ya nahi”
+//
+Pose-Based Training (Foundation)
+Tum kya extract karoge:
+17–33 body keypoints (x, y, confidence)
+Time sequence (frames)
+//
+Technique Embedding Model
+Model seekhta hai:
+“Perfect batting / bowling looks like this (numbers me)”
+Model types:
+LSTM / GRU
+Temporal CNN
+Transformer (later)
+
+
+Phase 1 (2–3 months):
+Sirf batting front-angle
+1 shot type (cover drive)
+20–30 clean training videos
+Phase 2:
+Similarity score
+Confidence output
+Phase 3:
+Bowler add
+Multiple angles
+
+// Metrics
+1.Bat Speed 🏏
+✔️ YES (High Accuracy)
+Kaise:
+Bat ke handle + toe ka keypoint detect
+Frame-to-frame displacement
+FPS ke hisaab se speed calculate
+Accuracy:
+High-speed video (120fps): ⭐⭐⭐⭐☆
+Normal video (30fps): ⭐⭐⭐☆
+
+2.Head Position & Stability 🧠
+✔️ YES (Very Accurate)
+Kaise:
+Nose / eyes keypoints
+Horizontal & vertical movement tracking
+Metrics:
+Head deviation (cm / frames)
+Head drop during swing
+Head stillness score
+Accuracy:
+⭐⭐⭐⭐⭐ (Best metric from video)
+
+3️⃣ Knee Position & Flexion 🦵
+✔️ YES (High Accuracy)
+Kaise:
+Hip–knee–ankle angle
+Front knee flexion timing
+Metrics:
+Max knee bend
+Knee collapse detection
+Over-flexion warning
+Accuracy:
+⭐⭐⭐⭐☆
+
+4️⃣ Front Foot Movement 👟
+✔️ YES (Very Accurate)
+Kaise:
+Ankle + toe keypoints
+Foot landing timing
+Distance & direction
+Metrics:
+Stride length
+Late / early foot plant
+Closed / open stance detection
+Accuracy:
+⭐⭐⭐⭐⭐
+
+5️⃣ Reaction Time ⚡
+⚠️ PARTIALLY POSSIBLE (Estimated)
+Kaise (video-only):
+Ball release frame detect
+First bat / foot movement detect
+Time difference = reaction time
+Accuracy:
+⭐⭐⭐☆☆
+⚠️ Absolute milliseconds exact nahi, but comparative tracking very useful.
+
+6️⃣ Body Weight Transfer ⚖️
+✔️ YES (Indirect but Useful)
+Kaise:
+Hip center shift
+Shoulder alignment
+Front vs back leg load estimation
+Metrics:
+COM (center of mass) movement
+Early / late weight transfer
+Balance loss detection
+Accuracy:
+⭐⭐⭐☆

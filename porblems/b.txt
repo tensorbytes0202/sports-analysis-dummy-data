@@ -1,0 +1,15 @@
+Cricket-specific labeled data hard hai
+
+Sports biomechanics + AI rare skill combo
+
+Video variance (angles, lighting, fps)
+
+Coaches ka trust jeetna tough
+
+Sirf Video pe direct train ❌ (Galat approach)
+Tum raw video pe direct CNN train nahi karoge, kyunki:
+Camera angle change hota hai
+Lighting change hoti hai
+Background change hota hai
+✔️ Sahi approach:
+Video → Pose → Numbers
